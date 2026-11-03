@@ -41,7 +41,6 @@ body,
   font-size: 2rem;
   padding-bottom: 0.4em;
   border-bottom: 1px solid rgb(113 113 122 / 0.7);
-  text-shadow: 0 0 18px rgb(255 255 255 / 0.25);
 }
 .md-body h2 {
   font-size: 1.45rem;
@@ -118,3 +117,27 @@ nav { scrollbar-width: thin; scrollbar-color: rgb(82 82 91) transparent; }
 @media (min-width: 1280px) {
   .md-body { font-size: 1.15rem; }
 }
+
+/* ---------- 共通アニメーション（各コンポーネントから利用） ---------- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scan {
+  0% { transform: translateY(-120px); }
+  100% { transform: translateY(110vh); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlitch {
+  0%, 100% { text-shadow: 0 0 0 rgba(255,255,255,0); transform: translateX(0); }
+  48% { text-shadow: 2px 0 0 rgba(255,255,255,0.6), -2px 0 0 rgba(255,255,255,0.25); transform: translateX(0); }
+  50% { text-shadow: -3px 0 0 rgba(255,255,255,0.65), 3px 0 0 rgba(255,255,255,0.2); transform: translateX(1px); }
+  52% { text-shadow: 1px 0 0 rgba(255,255,255,0.5), -1px 0 0 rgba(255,255,255,0.25); transform: translateX(-1px); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+.animate-scan { animation: scan 5s linear infinite; }
+.animate-fadeIn { animation: fadeIn 700ms ease both; }
+.glitch { animation: pulseGlitch 3.2s steps(1, end) infinite; }

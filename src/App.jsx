@@ -67,6 +67,20 @@ function Scanlines() {
   );
 }
 
+// 背景画像（public/background.png）を透過させて全面に固定表示
+function BackgroundImage() {
+  return (
+    <div className="pointer-events-none fixed inset-0">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.14] grayscale"
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}background.png)` }}
+      />
+      {/* 文字の可読性のため、周辺を黒く沈める */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.6)_100%)]" />
+    </div>
+  );
+}
+
 function NoiseGrid() {
   return (
     <div className="pointer-events-none absolute inset-0 opacity-25">
@@ -88,6 +102,7 @@ export default function App() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-zinc-100">
+      <BackgroundImage />
       <NoiseGrid />
       <Scanlines />
 
@@ -102,7 +117,7 @@ export default function App() {
           <div className="text-right text-xs text-zinc-300 md:text-base">
             <div>STATUS: ONLINE</div>
             <div>TIME: {timeText}</div>
-            <div>NODE: BOOTH</div>
+            <div>NODE: WEB</div>
           </div>
         </header>
 
