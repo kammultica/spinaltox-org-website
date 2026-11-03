@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* フォント（index.html で Google Fonts から読み込み） */
+@theme {
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", "Noto Sans JP", monospace;
+}
+
 html,
 body,
 #root {
@@ -70,7 +76,7 @@ body,
   color: rgb(161 161 170);
 }
 .md-body code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9em;
   background: rgb(39 39 42);
   border: 1px solid rgb(63 63 70);

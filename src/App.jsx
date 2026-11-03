@@ -46,6 +46,8 @@ const HEADLINES = [
 ];
 
 const TAGS = ["抽象文学", "真理", "世界", "クィアライズ", "神虁", "汎言語", "渾沌", "実験文学"];
+// タグ一覧の表示切り替え（true で表示）
+const SHOW_TAGS = false;
 
 function useClock() {
   const [now, setNow] = useState(new Date());
@@ -106,15 +108,15 @@ export default function App() {
       <NoiseGrid />
       <Scanlines />
 
-      <section className="relative z-10 flex min-h-screen flex-col p-4 md:p-8 lg:h-screen">
-        <header className="mb-4 flex flex-wrap items-start justify-between gap-3 border-b border-zinc-500/70 pb-4 font-mono">
+      <section className="relative z-10 flex min-h-screen flex-col p-4 md:px-8 md:py-5 lg:h-screen">
+        <header className="mb-4 flex flex-wrap items-end justify-between gap-3 border-b border-zinc-500/70 pb-3 font-mono">
           <div>
-            <div className="text-xs uppercase tracking-[0.4em] text-zinc-400 md:text-sm">DESTRACT TERMINAL</div>
-            <h1 className="glitch mt-2 text-3xl font-black tracking-[0.12em] sm:text-4xl sm:tracking-[0.18em] text-zinc-100 md:text-7xl">
+            <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-400 md:text-xs">DESTRACT TERMINAL</div>
+            <h1 className="glitch mt-1 text-3xl font-black tracking-[0.12em] sm:text-4xl sm:tracking-[0.18em] text-zinc-100 md:text-5xl">
               {BOOTH.publication}
             </h1>
           </div>
-          <div className="text-right text-xs text-zinc-300 md:text-base">
+          <div className="text-right text-[10px] leading-snug text-zinc-300 md:text-xs">
             <div>STATUS: ONLINE</div>
             <div>TIME: {timeText}</div>
             <div>NODE: WEB</div>
@@ -133,13 +135,15 @@ export default function App() {
 
           <CoreExplorer idleQuote={idleQuote} />
 
-          <div className="mt-4 grid grid-cols-4 gap-2 font-mono text-xs text-zinc-300 xl:grid-cols-8">
-            {TAGS.map((tag) => (
-              <div key={tag} className="rounded-lg border border-zinc-600/80 bg-black/60 px-2 py-1 text-center">
-                {tag}
-              </div>
-            ))}
-          </div>
+          {SHOW_TAGS && (
+            <div className="mt-4 grid grid-cols-4 gap-2 font-mono text-xs text-zinc-300 xl:grid-cols-8">
+              {TAGS.map((tag) => (
+                <div key={tag} className="rounded-lg border border-zinc-600/80 bg-black/60 px-2 py-1 text-center">
+                  {tag}
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         <SiteFooter />
